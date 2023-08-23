@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\Inforce .NET Task_Moskvichev Bogdan.props" />
+</Project>
