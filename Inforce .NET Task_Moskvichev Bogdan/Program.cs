@@ -1,5 +1,6 @@
 using Inforce_.NET_Task_Moskvichev_Bogdan;
 using Inforce_.NET_Task_Moskvichev_Bogdan.Helpers;
+using Inforce_.NET_Task_Moskvichev_Bogdan.Models.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -55,14 +56,15 @@ builder.Services.AddSession(options =>
 
 
 
-
-
-
-
-
-
-
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+    InitializeRoles(dbContext);
+}
+
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
@@ -87,3 +89,17 @@ app.MapControllerRoute(
 
 
 app.Run();
+
+
+
+void InitializeRoles(ApplicationDbContext dbContext)
+{
+    if (!dbContext.Roles.Any())
+    {
+        var adminRole = new Role { Name = "Admin" };
+        var userRole = new Role { Name = "User" };
+
+        dbContext.Roles.AddRange(adminRole, userRole);
+        dbContext.SaveChanges();
+    }
+}

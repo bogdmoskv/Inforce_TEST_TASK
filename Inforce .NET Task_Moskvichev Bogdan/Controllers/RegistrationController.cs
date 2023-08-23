@@ -1,4 +1,5 @@
 ﻿using Inforce_.NET_Task_Moskvichev_Bogdan.Models;
+using Inforce_.NET_Task_Moskvichev_Bogdan.Models.Authentication;
 using Inforce_.NET_Task_Moskvichev_Bogdan.Models.DTO;
 using Microsoft.AspNetCore.Mvc;
 
@@ -44,6 +45,16 @@ namespace Inforce_.NET_Task_Moskvichev_Bogdan.Controllers
 
 
             user.SetPassword(model.Password);
+
+            var userRole = _context.Roles.FirstOrDefault(r => r.Name == "User");
+            if (userRole != null)
+            {
+                user.UserRoles = new List<UserRole>
+                {
+                    new UserRole { RoleId = userRole.Id }
+                };
+            }
+
 
             _context.Users.Add(user);
             _context.SaveChanges();
