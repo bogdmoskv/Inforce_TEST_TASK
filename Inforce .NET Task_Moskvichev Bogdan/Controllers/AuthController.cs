@@ -14,7 +14,7 @@ namespace Inforce_.NET_Task_Moskvichev_Bogdan.Controllers
         private readonly IConfiguration _configuration;
         private readonly ApplicationDbContext _context;
 
-        AuthController(IConfiguration configuration, ApplicationDbContext context)
+        public AuthController(IConfiguration configuration, ApplicationDbContext context)
         {
             _configuration = configuration;
             _context = context;
@@ -28,7 +28,7 @@ namespace Inforce_.NET_Task_Moskvichev_Bogdan.Controllers
                 return BadRequest(ModelState);
             }
 
-            var user = _context.Users.FirstOrDefault(u => u.Email == userToLogin.Login);
+            var user = _context.Users.FirstOrDefault(u => u.Email == userToLogin.Email);
 
             if (user == null || !user.VerifyPassword(userToLogin.Password))
             {
@@ -56,15 +56,10 @@ namespace Inforce_.NET_Task_Moskvichev_Bogdan.Controllers
 
             var token = new JwtSecurityTokenHandler().WriteToken(jwt);
 
-            //Сохранение токена в сеансе
-            //_httpContextAccessor.HttpContext.Session.SetString("AuthToken", token);
-
-            // Возвращаем JWT-токен
-
             var response = new
             {
                 access_token = token,
-                username = userToLogin.Login
+                username = userToLogin.Email
             };
 
             return Json(response);
