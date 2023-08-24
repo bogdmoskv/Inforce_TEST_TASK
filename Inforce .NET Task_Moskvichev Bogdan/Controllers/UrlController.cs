@@ -2,6 +2,10 @@
 using Inforce_.NET_Task_Moskvichev_Bogdan.Models.DTO;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Claims;
+using System.IdentityModel.Tokens.Jwt;
+using Microsoft.AspNetCore.Authorization;
+
 
 namespace Inforce_.NET_Task_Moskvichev_Bogdan.Controllers
 {
@@ -20,6 +24,39 @@ namespace Inforce_.NET_Task_Moskvichev_Bogdan.Controllers
         [HttpPost("shorturl")]
         public async Task<IActionResult> CheckUrl(UrlDto url)
         {
+            string token = HttpContext.Request.Headers["Authorization"].FirstOrDefault()?.Replace("Bearer ", "");
+
+            if (string.IsNullOrEmpty(token))
+            {
+                return Unauthorized(); 
+            }
+
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var jwtToken = tokenHandler.ReadToken(token) as JwtSecurityToken;
+            if (jwtToken == null)
+            {
+                return Unauthorized(); 
+            }
+
+            var claims = jwtToken.Claims;
+
+
+            var userEmailClaim = claims.FirstOrDefault(c => c.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress");
+            if (userEmailClaim == null)
+            {
+                return Unauthorized(); 
+            }
+
+            var userEmail = userEmailClaim.Value;
+
+
+            var user = _context.Users.FirstOrDefault(u => u.Email == userEmail);
+            if (user == null)
+            {
+                return Unauthorized();
+            }
+
+
             if (!Uri.TryCreate(url.Url, UriKind.Absolute, out var inputUrl))
                 return BadRequest("Invalid url has been provided!");
 
@@ -38,10 +75,10 @@ namespace Inforce_.NET_Task_Moskvichev_Bogdan.Controllers
             var sUrl = new UrlManagement()
             {
                 Url = url.Url,
-                ShortUrl = randomStr
+                ShortUrl = randomStr,
+                OwnerId=user.Id,
             };
-
-           
+          
             _context.Urls.Add(sUrl);
             await _context.SaveChangesAsync();
 
@@ -93,7 +130,7 @@ namespace Inforce_.NET_Task_Moskvichev_Bogdan.Controllers
                 _context.Urls.Remove(url);
                 await _context.SaveChangesAsync();
 
-                return Ok($"Record with ID {id} was deleted!");
+                return Ok();
             }
             catch
             {
