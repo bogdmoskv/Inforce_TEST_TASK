@@ -139,5 +139,56 @@ namespace Inforce_.NET_Task_Moskvichev_Bogdan.Controllers
         }
 
 
+
+        [HttpGet("getInfoAboutOneUrl/{id}")]
+        public async Task<IActionResult> GetInfoAboutOneUrl(int id)
+        {
+            try
+            {
+                var baseUrl = $"{HttpContext.Request.Scheme}://{HttpContext.Request.Host}";
+
+                var url = await _context.Urls.FirstOrDefaultAsync(u => u.Id == id);
+
+                if (url == null)
+                {
+                    return NotFound(); 
+                }
+
+                url.ShortUrl = $"{baseUrl}/{url.ShortUrl}";
+
+                var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == url.OwnerId);
+
+                if (user != null)
+                {
+                    var urlInfo = new
+                    {
+                        url.Id,
+                        url.Url,
+                        url.ShortUrl,
+                        user.Email,
+                        url.OwnerId,
+                        url.CreatedTime
+                    };
+
+                    return Ok(urlInfo);
+                }
+                //var urlInfo = new UrlManagement
+                //{
+                //    Id = url.Id,
+                //    Url = url.Url,
+                //    ShortUrl = $"{baseUrl}/{url.ShortUrl}"
+                //};
+
+
+                return Ok(url);
+            }
+            catch
+            {
+                return BadRequest("Error while getting information about the URL!");
+            }
+        }
+
+
+
     }
 }
