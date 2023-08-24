@@ -30,7 +30,6 @@ namespace Inforce_.NET_Task_Moskvichev_Bogdan.Controllers
             }
 
 
-            //Створюємо коротку версію URL
             Random random = new Random();
             const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890@az";
             var randomStr = new string(Enumerable.Repeat(chars, 8)
@@ -77,6 +76,31 @@ namespace Inforce_.NET_Task_Moskvichev_Bogdan.Controllers
                 return BadRequest("Error after getting list of urls!");
             }
         }
+
+
+        [HttpDelete("delete/{id}")]
+        public async Task<IActionResult> DeleteUrl(int id)
+        {
+            try
+            {
+                var url = await _context.Urls.FindAsync(id);
+
+                if (url == null)
+                {
+                    return NotFound($"URL with ID {id} not found");
+                }
+
+                _context.Urls.Remove(url);
+                await _context.SaveChangesAsync();
+
+                return Ok($"Record with ID {id} was deleted!");
+            }
+            catch
+            {
+                return BadRequest($"Error deleting URL with ID {id}");
+            }
+        }
+
 
     }
 }

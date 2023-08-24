@@ -61,8 +61,6 @@ namespace Inforce_.NET_Task_Moskvichev_Bogdan.Controllers
                 access_token = token
             };
             
-                  
-
 
             return Json(response);
         }
