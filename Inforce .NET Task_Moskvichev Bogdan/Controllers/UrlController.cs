@@ -1,6 +1,7 @@
 ﻿using Inforce_.NET_Task_Moskvichev_Bogdan.Models;
 using Inforce_.NET_Task_Moskvichev_Bogdan.Models.DTO;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Inforce_.NET_Task_Moskvichev_Bogdan.Controllers
 {
@@ -42,6 +43,29 @@ namespace Inforce_.NET_Task_Moskvichev_Bogdan.Controllers
             {
                 Url = result
             });
+        }
+
+        [HttpGet("getAll")]
+        public async Task<IActionResult> GetAllUrls()
+        {
+            try
+            {
+                var baseUrl = $"{HttpContext.Request.Scheme}://{HttpContext.Request.Host}";
+                var urls = await _context.Urls.ToListAsync();
+                
+                urls = urls.Select(url => new UrlManagement
+                {
+                    Id = url.Id,
+                    Url = url.Url,
+                    ShortUrl = $"{baseUrl}/{url.ShortUrl}"
+                }).ToList();
+
+                return Ok(urls);
+            }
+            catch
+            {
+                return BadRequest("Error after getting list of urls!");
+            }
         }
 
 
