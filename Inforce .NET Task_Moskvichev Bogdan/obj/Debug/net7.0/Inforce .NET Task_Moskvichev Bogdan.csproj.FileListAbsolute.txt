@@ -28,9 +28,7 @@ C:\Users\Bogdan\Desktop\rval\Inforce .NET Task_Moskvichev Bogdan\Inforce .NET Ta
 C:\Users\Bogdan\Desktop\rval\Inforce .NET Task_Moskvichev Bogdan\Inforce .NET Task_Moskvichev Bogdan\obj\Debug\net7.0\staticwebassets.pack.json
 C:\Users\Bogdan\Desktop\rval\Inforce .NET Task_Moskvichev Bogdan\Inforce .NET Task_Moskvichev Bogdan\obj\Debug\net7.0\staticwebassets.build.json
 C:\Users\Bogdan\Desktop\rval\Inforce .NET Task_Moskvichev Bogdan\Inforce .NET Task_Moskvichev Bogdan\obj\Debug\net7.0\staticwebassets.development.json
-C:\Users\Bogdan\Desktop\rval\Inforce .NET Task_Moskvichev Bogdan\Inforce .NET Task_Moskvichev Bogdan\obj\Debug\net7.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 C:\Users\Bogdan\Desktop\rval\Inforce .NET Task_Moskvichev Bogdan\Inforce .NET Task_Moskvichev Bogdan\obj\Debug\net7.0\scopedcss\bundle\Inforce .NET Task_Moskvichev Bogdan.styles.css
-C:\Users\Bogdan\Desktop\rval\Inforce .NET Task_Moskvichev Bogdan\Inforce .NET Task_Moskvichev Bogdan\obj\Debug\net7.0\scopedcss\projectbundle\Inforce .NET Task_Moskvichev Bogdan.bundle.scp.css
 C:\Users\Bogdan\Desktop\rval\Inforce .NET Task_Moskvichev Bogdan\Inforce .NET Task_Moskvichev Bogdan\obj\Debug\net7.0\Inforce .NET Task_Moskvichev Bogdan.csproj.CopyComplete
 C:\Users\Bogdan\Desktop\rval\Inforce .NET Task_Moskvichev Bogdan\Inforce .NET Task_Moskvichev Bogdan\obj\Debug\net7.0\Inforce .NET Task_Moskvichev Bogdan.dll
 C:\Users\Bogdan\Desktop\rval\Inforce .NET Task_Moskvichev Bogdan\Inforce .NET Task_Moskvichev Bogdan\obj\Debug\net7.0\refint\Inforce .NET Task_Moskvichev Bogdan.dll

@@ -172,13 +172,6 @@ namespace Inforce_.NET_Task_Moskvichev_Bogdan.Controllers
 
                     return Ok(urlInfo);
                 }
-                //var urlInfo = new UrlManagement
-                //{
-                //    Id = url.Id,
-                //    Url = url.Url,
-                //    ShortUrl = $"{baseUrl}/{url.ShortUrl}"
-                //};
-
 
                 return Ok(url);
             }
@@ -187,8 +180,5 @@ namespace Inforce_.NET_Task_Moskvichev_Bogdan.Controllers
                 return BadRequest("Error while getting information about the URL!");
             }
         }
-
-
-
     }
 }

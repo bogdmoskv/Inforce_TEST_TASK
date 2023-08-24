@@ -1,5 +1,4 @@
-﻿using Inforce_.NET_Task_Moskvichev_Bogdan.Models.Authentication;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -15,29 +14,18 @@ namespace Inforce_.NET_Task_Moskvichev_Bogdan.Models
         public string ? PasswordHash { get; set; } = string.Empty;
         [Required]
         public string ? Salt { get; set; }= string.Empty;
-       // public ICollection<UserRole> UserRoles { get; set; }
         public string ? Role { get; set; }=string.Empty;
         public void SetPassword(string password)
         {
-            // Генерація випадкової солі
             var saltBytes = GenerateSalt();
-
-            // Хешування паролю з використанням солі
             PasswordHash = HashPassword(password, saltBytes);
-
-            // Збереження солі
             Salt = ConvertToBase64String(saltBytes);
         }
 
         public bool VerifyPassword(string ?password)
         {
-            // Отримання солі
             var saltBytes = ConvertFromBase64String(Salt);
-
-            // Хешування введенного паролю з використанням солі
             var hashedPassword = HashPassword(password, saltBytes);
-
-            // Порівняння хешей паролей
             return string.Equals(hashedPassword, PasswordHash);
         }
 

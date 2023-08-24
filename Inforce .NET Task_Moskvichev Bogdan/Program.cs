@@ -1,13 +1,11 @@
 using Inforce_.NET_Task_Moskvichev_Bogdan;
 using Inforce_.NET_Task_Moskvichev_Bogdan.Helpers;
-using Inforce_.NET_Task_Moskvichev_Bogdan.Models.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 builder.Services.AddControllersWithViews();
 
 
@@ -24,53 +22,32 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     {
         options.TokenValidationParameters = new TokenValidationParameters
         {
-            // указывает, будет ли валидироваться издатель при валидации токена
             ValidateIssuer = true,
-            // строка, представляющая издателя
             ValidIssuer = AuthOptions.ISSUER,
-            // будет ли валидироваться потребитель токена
             ValidateAudience = true,
-            // установка потребителя токена
             ValidAudience = AuthOptions.AUDIENCE,
-            // будет ли валидироваться время существования
             ValidateLifetime = true,
-            // установка ключа безопасности
             IssuerSigningKey = AuthOptions.GetSymmetricSecurityKey(),
-            // валидация ключа безопасности
             ValidateIssuerSigningKey = true,
         };
     });
 
 
-
-// Добавление распределенного кэша и сеансового хранилища
-//TODO: увеличить время в FromMinutes()
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession(options =>
 {
-    options.Cookie.Name = "AuthToken"; // Имя куки, используемого для хранения сеанса
-    options.IdleTimeout = TimeSpan.FromMinutes(2); // Время неактивности сеанса, после которого он истекает (в данном случае - 30 минут)
+    options.Cookie.Name = "AuthToken"; 
+    options.IdleTimeout = TimeSpan.FromMinutes(90); 
 });
-
-
 
 
 
 var app = builder.Build();
 
-using (var scope = app.Services.CreateScope())
-{
-    var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-    InitializeRoles(dbContext);
-}
 
-
-
-// Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
@@ -110,14 +87,3 @@ app.Run();
 
 
 
-void InitializeRoles(ApplicationDbContext dbContext)
-{
-    //if (!dbContext.Roles.Any())
-    //{
-    //    var adminRole = new Role { Name = "Admin" };
-    //    var userRole = new Role { Name = "User" };
-
-    //    dbContext.Roles.AddRange(adminRole, userRole);
-    //    dbContext.SaveChanges();
-    //}
-}

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "JQpZCqBfwYjSzMc2ohYw8UYLq9Elf+1vg6GO1I3BbRQ=",
+  "Hash": "U6H37ufHbp01HYIbe3yNw636U2bUat31I2zKCo6ze+k=",
   "Source": "Inforce .NET Task_Moskvichev Bogdan",
   "BasePath": "_content/Inforce .NET Task_Moskvichev Bogdan",
   "Mode": "Default",
@@ -16,40 +16,6 @@
     }
   ],
   "Assets": [
-    {
-      "Identity": "C:\\Users\\Bogdan\\Desktop\\rval\\Inforce .NET Task_Moskvichev Bogdan\\Inforce .NET Task_Moskvichev Bogdan\\obj\\Debug\\net7.0\\scopedcss\\bundle\\Inforce .NET Task_Moskvichev Bogdan.styles.css",
-      "SourceId": "Inforce .NET Task_Moskvichev Bogdan",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Bogdan\\Desktop\\rval\\Inforce .NET Task_Moskvichev Bogdan\\Inforce .NET Task_Moskvichev Bogdan\\obj\\Debug\\net7.0\\scopedcss\\bundle\\",
-      "BasePath": "_content/Inforce .NET Task_Moskvichev Bogdan",
-      "RelativePath": "Inforce .NET Task_Moskvichev Bogdan.styles.css",
-      "AssetKind": "All",
-      "AssetMode": "CurrentProject",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "ScopedCss",
-      "AssetTraitValue": "ApplicationBundle",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\Bogdan\\Desktop\\rval\\Inforce .NET Task_Moskvichev Bogdan\\Inforce .NET Task_Moskvichev Bogdan\\obj\\Debug\\net7.0\\scopedcss\\bundle\\Inforce .NET Task_Moskvichev Bogdan.styles.css"
-    },
-    {
-      "Identity": "C:\\Users\\Bogdan\\Desktop\\rval\\Inforce .NET Task_Moskvichev Bogdan\\Inforce .NET Task_Moskvichev Bogdan\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\Inforce .NET Task_Moskvichev Bogdan.bundle.scp.css",
-      "SourceId": "Inforce .NET Task_Moskvichev Bogdan",
-      "SourceType": "Computed",
-      "ContentRoot": "C:\\Users\\Bogdan\\Desktop\\rval\\Inforce .NET Task_Moskvichev Bogdan\\Inforce .NET Task_Moskvichev Bogdan\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\",
-      "BasePath": "_content/Inforce .NET Task_Moskvichev Bogdan",
-      "RelativePath": "Inforce .NET Task_Moskvichev Bogdan.bundle.scp.css",
-      "AssetKind": "All",
-      "AssetMode": "Reference",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "ScopedCss",
-      "AssetTraitValue": "ProjectBundle",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\Bogdan\\Desktop\\rval\\Inforce .NET Task_Moskvichev Bogdan\\Inforce .NET Task_Moskvichev Bogdan\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\Inforce .NET Task_Moskvichev Bogdan.bundle.scp.css"
-    },
     {
       "Identity": "C:\\Users\\Bogdan\\Desktop\\rval\\Inforce .NET Task_Moskvichev Bogdan\\Inforce .NET Task_Moskvichev Bogdan\\wwwroot\\css\\site.css",
       "SourceId": "Inforce .NET Task_Moskvichev Bogdan",

@@ -1,10 +1,6 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\Bogdan\\Desktop\\rval\\Inforce .NET Task_Moskvichev Bogdan\\Inforce .NET Task_Moskvichev Bogdan\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\Inforce .NET Task_Moskvichev Bogdan.bundle.scp.css",
-      "PackagePath": "staticwebassets\\Inforce .NET Task_Moskvichev Bogdan.bundle.scp.css"
-    },
-    {
       "Id": "C:\\Users\\Bogdan\\Desktop\\rval\\Inforce .NET Task_Moskvichev Bogdan\\Inforce .NET Task_Moskvichev Bogdan\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
