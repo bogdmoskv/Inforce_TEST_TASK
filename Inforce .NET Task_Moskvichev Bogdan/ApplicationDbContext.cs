@@ -9,8 +9,8 @@ namespace Inforce_.NET_Task_Moskvichev_Bogdan
     public class ApplicationDbContext : DbContext
     {
         public DbSet<User> Users { get; set; }
-        public DbSet<Role> Roles { get; set; }
-        public DbSet<UserRole> UserRoles { get; set; }
+        //public DbSet<Role> Roles { get; set; }
+        //public DbSet<UserRole> UserRoles { get; set; }
         public DbSet<UrlManagement> Urls { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
@@ -22,8 +22,8 @@ namespace Inforce_.NET_Task_Moskvichev_Bogdan
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<UserRole>()
-                .HasKey(ur => new { ur.UserId, ur.RoleId });
+            //modelBuilder.Entity<UserRole>()
+            //    .HasKey(ur => new { ur.UserId, ur.RoleId });
         }
     }
 }

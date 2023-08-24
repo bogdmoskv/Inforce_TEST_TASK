@@ -15,8 +15,8 @@ namespace Inforce_.NET_Task_Moskvichev_Bogdan.Models
         public string ? PasswordHash { get; set; } = string.Empty;
         [Required]
         public string ? Salt { get; set; }= string.Empty;
-        public ICollection<UserRole> UserRoles { get; set; }
-
+       // public ICollection<UserRole> UserRoles { get; set; }
+        public string ? Role { get; set; }=string.Empty;
         public void SetPassword(string password)
         {
             // Генерація випадкової солі

@@ -29,7 +29,7 @@ namespace Inforce_.NET_Task_Moskvichev_Bogdan.Controllers
             }
 
             var user = _context.Users.FirstOrDefault(u => u.Email == userToLogin.Email);
-
+            
             if (user == null || !user.VerifyPassword(userToLogin.Password))
             {
                 return Unauthorized("Invalid email or password");
@@ -38,14 +38,14 @@ namespace Inforce_.NET_Task_Moskvichev_Bogdan.Controllers
             var claims = new[]
            {
                 new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-                new Claim(ClaimTypes.Email, user.Email),             
+                new Claim(ClaimTypes.Email, user.Email), 
+                new Claim(ClaimTypes.Role, user.Role),
             };
 
             var issuer = _configuration["AuthOptions:Issuer"];
             var audience = _configuration["AuthOptions:Audience"];
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["AuthOptions:Key"]));
-
-            
+           
 
             var jwt = new JwtSecurityToken(
                 issuer: issuer,
@@ -58,9 +58,11 @@ namespace Inforce_.NET_Task_Moskvichev_Bogdan.Controllers
 
             var response = new
             {
-                access_token = token,
-                username = userToLogin.Email
+                access_token = token
             };
+            
+                  
+
 
             return Json(response);
         }

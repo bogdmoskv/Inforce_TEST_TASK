@@ -112,12 +112,12 @@ app.Run();
 
 void InitializeRoles(ApplicationDbContext dbContext)
 {
-    if (!dbContext.Roles.Any())
-    {
-        var adminRole = new Role { Name = "Admin" };
-        var userRole = new Role { Name = "User" };
+    //if (!dbContext.Roles.Any())
+    //{
+    //    var adminRole = new Role { Name = "Admin" };
+    //    var userRole = new Role { Name = "User" };
 
-        dbContext.Roles.AddRange(adminRole, userRole);
-        dbContext.SaveChanges();
-    }
+    //    dbContext.Roles.AddRange(adminRole, userRole);
+    //    dbContext.SaveChanges();
+    //}
 }
