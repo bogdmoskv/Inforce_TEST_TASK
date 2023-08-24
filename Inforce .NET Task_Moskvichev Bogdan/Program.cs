@@ -82,10 +82,28 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
+app.MapFallback(async (ApplicationDbContext db, HttpContext ctx) =>
+{
+    var path = ctx.Request.Path.ToUriComponent().Trim('/');
+    var urlMatch = db.Urls.FirstOrDefault(x =>
+        x.ShortUrl.ToLower().Trim() == path.Trim());
+
+    if (urlMatch == null)
+        return Results.BadRequest("Invalid request!");
+
+    return Results.Redirect(urlMatch.Url);
+});
+
+
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
+
+app.UseCors(builder => builder
+    .WithOrigins("http://localhost:4200")
+    .AllowAnyHeader()
+    .AllowAnyMethod());
 
 
 app.Run();
